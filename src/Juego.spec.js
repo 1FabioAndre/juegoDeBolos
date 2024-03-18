@@ -3,7 +3,7 @@ import Juego from "./Juego";
 describe("Bowling Game Test", () => {
   it("Ejecutando test 1", () => {
     const nuevoJuego = new Juego();
-    expect(nuevoJuego).toEqual({});
+    expect(nuevoJuego).toEqual(new Juego);
   });
 
   it("Deberia devolver 20 resultados de 0", () => {
@@ -11,7 +11,15 @@ describe("Bowling Game Test", () => {
     for(let i = 0; i < 20; i++){
         nuevoJuego.roll(0);
     }
-    expect(nuevoJuego.score()).toEqual(0);
+    expect(nuevoJuego.score).toEqual(0);
+  });
+
+  it("Deberia devolver 20 por el ciclo for", () => {
+    const nuevoJuego = new Juego();
+    for(let i = 0; i < 20; i++){
+        nuevoJuego.roll(1);
+    }
+    expect(nuevoJuego.score).toEqual(20);
   });
 });
 
