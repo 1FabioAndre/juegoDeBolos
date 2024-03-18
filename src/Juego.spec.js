@@ -1,25 +1,38 @@
-import Juego from "./Juego";
 
-describe("Bowling Game Test", () => {
-  it("Ejecutando test 1", () => {
-    const nuevoJuego = new Juego();
-    expect(nuevoJuego).toEqual(new Juego);
+import Juego from './Juego'; 
+
+describe('BowlingGameTest', () => {
+  let g;
+
+  beforeEach(() => {
+    g = new Juego(); // Crear Variable antes de cada prueba
   });
 
-  it("Deberia devolver 20 resultados de 0", () => {
-    const nuevoJuego = new Juego();
-    for(let i = 0; i < 20; i++){
-        nuevoJuego.roll(0);
+  const rollMany = (n, pins) => { // Auxiloar para multiples lazamientos
+    for (let i = 0; i < n; i++) {
+      g.roll(pins);
     }
-    expect(nuevoJuego.score).toEqual(0);
+  };
+
+  const rollSpare = () => { // Spare
+    g.roll(5);
+    g.roll(5);
+  };
+
+  it('Juego sin puntuacion', () => { 
+    rollMany(20, 0); // Lanzando 20 veces con 0 pines
+    expect(g.score()).toEqual(0); 
   });
 
-  it("Deberia devolver 20 por el ciclo for", () => {
-    const nuevoJuego = new Juego();
-    for(let i = 0; i < 20; i++){
-        nuevoJuego.roll(1);
-    }
-    expect(nuevoJuego.score).toEqual(20);
+  it('Deberia devolver 20', () => { // Prueba para un juego con todos los lanzamientos de 1
+    rollMany(20, 1); // Lanzando 20 veces con 1 pin en cada lanzamiento
+    expect(g.score()).toEqual(20); 
+  });
+
+  it('Probando un juego con un spare', () => { // Prueba para un juego con un spare
+    rollSpare(); // Spare
+    g.roll(3); // Lanzamiento de 3 
+    rollMany(17, 0); // Lanzando 17 veces con 0 pines
+    expect(g.score()).toEqual(16);
   });
 });
-
