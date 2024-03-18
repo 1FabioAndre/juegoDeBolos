@@ -2,8 +2,11 @@ class Juego{
     constructor(){
     }
 
-    hola(cadena){
-        return cadena;
+    roll(pin){
+    }
+
+    score(){
+        return 0;
     }
 }
 
