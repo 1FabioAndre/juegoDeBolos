@@ -48,4 +48,9 @@ describe('BowlingGameTest', () => {
     rollMany(16, 0);
     expect(g.score()).toEqual(24);
   });
+
+  it('Juego perfecto, deberia devolver 300', () => {
+    rollMany(12, 10);
+    expect(g.score()).toEqual(300);
+  });
 });
