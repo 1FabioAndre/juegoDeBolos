@@ -19,6 +19,10 @@ describe('BowlingGameTest', () => {
     g.roll(5);
   };
 
+  const rollStrike = () => {
+    g.roll(10);
+  }
+
   it('Juego sin puntuacion', () => { 
     rollMany(20, 0); // Lanzando 20 veces con 0 pines
     expect(g.score()).toEqual(0); 
@@ -37,7 +41,8 @@ describe('BowlingGameTest', () => {
   });
 
   it('Deberia calcular el score con un strike', () => {
-    g.roll(10); // Strike
+    // g.roll(10); // Strike
+    rollStrike();
     g.roll(3);
     g.roll(4);
     rollMany(16, 0);
