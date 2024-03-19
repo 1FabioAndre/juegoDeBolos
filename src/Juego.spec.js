@@ -35,4 +35,12 @@ describe('BowlingGameTest', () => {
     rollMany(17, 0); // Lanzando 17 veces con 0 pines
     expect(g.score()).toEqual(16);
   });
+
+  it('Deberia calcular el score con un strike', () => {
+    g.roll(10); // Strike
+    g.roll(3);
+    g.roll(4);
+    rollMany(16, 0);
+    expect(g.score()).toEqual(24);
+  });
 });
